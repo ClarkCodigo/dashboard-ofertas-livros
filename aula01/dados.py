@@ -7,3 +7,8 @@ from pathlib import Path
 # mesmo quando é executado a partir de outra pasta (como no Streamlit Cloud).
 PASTA = Path(__file__).parent
 CAMINHO_LIVROS = PASTA / "livros.csv"
+
+def ler livros():
+        return "ler livros"
+
+print(ler_livros())
