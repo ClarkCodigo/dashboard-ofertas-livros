@@ -28,6 +28,11 @@ def calculo_media(livros):
     preco_medio: float = soma /len(livros)
     return preco_medio
 
+def preco_mais_caro(livro):
+    #preco do livro
+    #nome do livro
+    #retornar dados
+
 def quantidade_estrelas(livros):
     estrelas: int = 0
     for livro in livros:
