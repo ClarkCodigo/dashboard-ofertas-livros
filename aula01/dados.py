@@ -20,12 +20,32 @@ def ler_livros():
         print("Algum erro aconteceu na leitura desse arquivo")
     return livros
 
+def calculo_media(livros):
+    soma: float = 0
+    for livro in livros:
+        preco_original: str = livro["preco"]
+        preco_original_limpo: str =  preco_original.replace("£","")
+        preco_num: float = float(preco_original_limpo)
+        soma += preco_num
+    preco_medio: float = soma /len(livros)
+    return preco_medio
+
+def quantidade_estrelas(livros):
+    estrelas: int = 0
+    for livro in livros:
+        not_limpa: str = livro["nota"].lower().strip()
+        if not_limpa == "five":
+            estrelas = estrelas + 1
+    return estrelas
+
 
 if __name__ == "__main__":
-    livros = ler_livros()   
-    print(f"A quantidade de livros da coleção e de {len(livros)} livros.")
-
-
+    livros = ler_livros() 
+    # print(f"A quantidade de livros da coleção e de {len(livros)} livros.")
+    # preco_medio:float = calculo_media(livros)
+    # print (f"Preço medio £{preco_medio:.2f}")
+    cinco_estrelas = quantidade_estrelas(livros)
+    print(f"Quantidade cinco estrelas: {cinco_estrelas}")
 
 def ler_livros_v2():
     try:
