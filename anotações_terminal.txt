@@ -1,0 +1,8 @@
+-> Chama o servidor 
+.\.venv\Scripts\activate
+
+-> Ativa o servidor
+streamlit run aula01/app.py
+
+-> chama as funções do arquivo
+python .\dados.py

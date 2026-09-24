@@ -1,8 +1,6 @@
 """Leitura dos arquivos CSV do projeto."""
 from pathlib import Path
 import csv
-# Pasta onde este arquivo .py está. Assim o programa encontra o CSV
-# mesmo quando é executado a partir de outra pasta (como no Streamlit Cloud).
 
 PASTA = Path(__file__).parent
 CAMINHO_LIVROS = PASTA / "livros.csv"
@@ -23,9 +21,9 @@ def ler_livros():
 def calculo_media(livros):
     soma: float = 0
     for livro in livros:
-        preco_original: str = livro["preco"]
-        preco_original_limpo: str =  preco_original.replace("£","")
-        preco_num: float = float(preco_original_limpo)
+        preco_original: str         = livro["preco"]
+        preco_original_limpo: str   =  preco_original.replace("£","")
+        preco_num: float            = float(preco_original_limpo)
         soma += preco_num
     preco_medio: float = soma /len(livros)
     return preco_medio
@@ -38,15 +36,16 @@ def quantidade_estrelas(livros):
             estrelas = estrelas + 1
     return estrelas
 
-
+#area de testes
 if __name__ == "__main__":
     livros = ler_livros() 
     # print(f"A quantidade de livros da coleção e de {len(livros)} livros.")
     # preco_medio:float = calculo_media(livros)
     # print (f"Preço medio £{preco_medio:.2f}")
-    cinco_estrelas = quantidade_estrelas(livros)
-    print(f"Quantidade cinco estrelas: {cinco_estrelas}")
+    # cinco_estrelas = quantidade_estrelas(livros)
+    # print(f"Quantidade cinco estrelas: {cinco_estrelas}")
 
+#versoes basicas
 def ler_livros_v2():
     try:
         with open("livros.csv", "r", encoding="utf-8") as arquivo:
