@@ -14,7 +14,7 @@ def ler_livros():
                 livros.append(linha)
     except FileNotFoundError:
         print("O arquivo.csv não foi encontrado nessa aula")
-    except Expection as error:
+    except Exception as error:
         print("Algum erro aconteceu na leitura desse arquivo")
     return livros
 
@@ -28,10 +28,18 @@ def calculo_media(livros):
     preco_medio: float = soma /len(livros)
     return preco_medio
 
-def preco_mais_caro(livro):
-    #preco do livro
-    #nome do livro
-    #retornar dados
+def preco_mais_caro(livros):
+    maior_preco = 0.0
+    
+    for livro in livros:
+        preco_original: str = livro["preco"]
+        preco_limpo: str = preco_original.replace("£", "").strip()
+        preco_num: float = float(preco_limpo)
+        
+        if preco_num > maior_preco:
+            maior_preco = preco_num
+            
+    return maior_preco
 
 def quantidade_estrelas(livros):
     estrelas: int = 0
@@ -57,7 +65,7 @@ def ler_livros_v2():
             print(arquivo.readline())
     except FileNotFoundError:
         print("O arquivo.csv não foi encontrado nessa aula")
-    except Expection as error:
+    except Exception as error:
         print("Algum erro aconteceu na leitura desse arquivo")
 
 def ler_livros_v1():
@@ -67,7 +75,7 @@ def ler_livros_v1():
         print(arquivo.readline())
     except FileNotFoundError:
         print("O arquivo.csv não foi encontrado nessa aula")
-    except Expection as error:
+    except Exception as error:
         print("Algum erro aconteceu na leitura desse arquivo")
     finally:
         if arquivo is not None:
