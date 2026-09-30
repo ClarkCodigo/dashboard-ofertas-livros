@@ -6,3 +6,5 @@ streamlit run aula01/app.py
 
 -> chama as funções do arquivo
 python .\dados.py
+
+teste
