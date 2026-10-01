@@ -9,7 +9,9 @@ def main():
     st.set_page_config(page_title="Dashboard de Livros", page_icon="📚", layout="wide")
     st.title("📚 Dashboard de Livros")
 
-    livros = dados.ler_livros()
+    # livros_originais = dados.ler_livros()
+    livros = dados.carregar_livros()
+
 
     col1, col2, col3, col4 = st.columns(4)
     qtd_livros = len(livros)
@@ -22,7 +24,7 @@ def main():
     col3.metric("Qtd. livros 5 Estrelas", cinco_estrelas)
 
     mais_caro = dados.encontrar_mais_caro(livros)
-    col4.metric("Livro mais caro", mais_caro["preco"])
+    col4.metric("Livro mais caro £", f"{mais_caro["preco"]}")
     col4.caption(mais_caro["titulo"])
 
     st.dataframe(livros)

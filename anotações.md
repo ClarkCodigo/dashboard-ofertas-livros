@@ -1,4 +1,4 @@
-# ** Rodar antes de inciar o projeto:**
+## ** Rodar antes de inciar o projeto:**
 
 ``` powershell
 python -m venv .venv
@@ -8,3 +8,10 @@ pip install -r aula01/requirements.txt
 streamlit run aula01/app.py #rodar o arquivo web
  
 ```
+
+*Utilizar docstring nas funções*
+
+**[ Aula Dois ]**
+1. Filtragem de dados, string para numeros
+2. Aplicação de listas
+3. *Dicionário (chave:valor) 

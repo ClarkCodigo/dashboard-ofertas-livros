@@ -8,7 +8,6 @@ from pathlib import Path
 PASTA = Path(__file__).parent
 CAMINHO_LIVROS = PASTA / "livros.csv"
 
-
 def ler_livros():
     """Lê o CSV de livros e devolve uma lista de dicionários.
 
@@ -34,23 +33,22 @@ def calcular_preco_medio(livros):
 
     O preço vem como texto ("£51.77"): removemos o "£" e convertemos com float.
     """
-    soma: float = 0
+    soma = 0
     for livro in livros:
-        preco_original: str = livro["preco"]
-        preco_original_limpo: str = preco_original.replace("£", "")
-        preco_num: float = float(preco_original_limpo)
-        soma += preco_num
+    #     preco_original: str = livro["preco"]
+    #     preco_original_limpo: str = preco_original.replace("£", "")
+    #     preco_num: float = float(preco_original_limpo)
+        soma += livro["preco"]
 
     preco_medio: float = soma / len(livros)
     return preco_medio
-
 
 def contar_cinco_estrelas(livros):
     """Conta quantos livros têm a nota máxima. A nota vem como texto ("Five")."""
     contador: int = 0
     for livro in livros:
-        nota_limpa: str = livro["nota"].lower().strip()
-        if nota_limpa == "five":
+        # nota_limpa: str = livro["nota"].lower().strip()
+        if livro["nota"] == 5:
             contador += 1
 
     return contador
@@ -60,14 +58,59 @@ def encontrar_mais_caro(livros):
     """Devolve o livro de maior preço. O preço vem como texto ("£51.77")."""
     mais_caro = livros[0]
     for livro in livros:
-        preco = float(livro["preco"].replace("£", ""))
-        preco_mais_caro = float(mais_caro["preco"].replace("£", ""))
-        if preco > preco_mais_caro:
+        # preco = float(livro["preco"].replace("£", ""))
+        # preco_mais_caro = float(mais_caro["preco"].replace("£", ""))
+        if livro["preco"] > mais_caro["preco"]:
             mais_caro = livro
     return mais_caro
 
 
+def converte_preco(preco):
+    ''' Remove o sinal de libra dos preços '''
+    return float(preco.replace("£", ""))
+
+
+def convert_nota(nota):
+    ''' Troca string por valor numero inteiro '''
+    match nota:
+        case "Five":
+            return 5
+        case "Four":
+            return 4
+        case "Tree":
+            return 3
+        case "Two":
+            return 2
+        case _:
+            return 1
+
+
+def preparar_livros(linhas):
+    livros = []
+    for linha in linhas:
+        livro = {
+            "titulo":   linha["titulo"],
+            "preco":    converte_preco(linha["preco"]),
+            "categoria":linha["categoria"],
+            "nota":    convert_nota(linha["nota"]),
+            "url":      linha["url"]
+        }
+        livros.append(livro)
+    return livros
+
+def carregar_livros():
+    return preparar_livros(ler_livros())
+
+
 if __name__ == "__main__":
     livros = ler_livros()
-    print(f"{len(livros)} livros carregados")
-    print("Primeiro livro:", livros[0])
+    livro_teste= preparar_livros(livros)
+
+    print(len(livro_teste))
+    # livros_convertidos = preparar_livros(livros)
+
+    # print(f"Livro o:{livros[0]}")
+    # print(f"Livro p:{livros_convertidos[0]}")
+
+    # print(f"{len(livros)} livros carregados")
+    # print("Primeiro livro:", livros[0])
