@@ -46,22 +46,22 @@ def contar_por_faixa_dic(livros):
 
     return contagem
 
-def contar_por_faixa(livros):
-    """ Indica a quantiade de livros por categoria """
+# def contar_por_faixa(livros):
+#     """ Indica a quantiade de livros por categoria """
 
-    contar_baratos = 0
-    contar_medios = 0
-    contar_caros = 0
+#     contar_baratos = 0
+#     contar_medios = 0
+#     contar_caros = 0
 
-    for livro in livros:
-        if classificar_preco(livro) == "Barato":
-            contar_baratos +=1
-        elif classificar_preco(livro) == "Medio":
-            contar_medios +=1
-        else:
-            contar_caros +=1
+#     for livro in livros:
+#         if classificar_preco(livro) == "Barato":
+#             contar_baratos +=1
+#         elif classificar_preco(livro) == "Medio":
+#             contar_medios +=1
+#         else:
+#             contar_caros +=1
             
-    return contar_baratos, contar_medios, contar_caros
+#     return contar_baratos, contar_medios, contar_caros
 
 def main():
     st.set_page_config(page_title="Dashboard de Livros", page_icon="📚", layout="wide")
