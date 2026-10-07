@@ -58,12 +58,9 @@ def main():
     st.title("📚 Dashboard de Livros")
 
     livros = dados.carregar_livros()
-    # tabela = montar_tabela(livros)
-    busca = st.text_input("🔎 Busca por titulos:", type="search")
-    resultado_busca = montar_tabela(buscar_por_titulo(livros,busca))
 
     col1, col2, col3, col4 = st.columns(4)
-    qtd_livros = len(resultado_busca)
+    qtd_livros = len(livros)
     col1.metric("Total de Livros", qtd_livros)
 
     preco_medio = dados.calcular_preco_medio(livros)
@@ -76,6 +73,9 @@ def main():
     col4.metric("Livro mais caro", f"£{mais_caro["preco"]}")
     col4.caption(mais_caro["titulo"])
 
+    # tabela = montar_tabela(livros)
+    busca = st.text_input("🔎 Busca por titulos:", type="search")
+    resultado_busca = montar_tabela(buscar_por_titulo(livros,busca))
 
     st.dataframe(resultado_busca)
 
