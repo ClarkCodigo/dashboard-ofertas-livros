@@ -38,7 +38,6 @@ def calcular_preco_medio(livros):
     preco_medio: float = soma / len(livros)
     return preco_medio
 
-
 def contar_cinco_estrelas(livros):
     """Conta quantos livros têm a nota máxima."""
     contador: int = 0
@@ -47,7 +46,6 @@ def contar_cinco_estrelas(livros):
             contador += 1
 
     return contador
-
 
 def encontrar_mais_caro(livros):
     """Devolve o livro de maior preço. O preço vem como texto ("£51.77")."""
