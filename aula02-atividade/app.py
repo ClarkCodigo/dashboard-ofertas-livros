@@ -41,17 +41,33 @@ def contar_por_faixa(livros):
     return contagem
 
 def buscar_por_titulo(livros, busca):
-    if busca == "":
+    """ Metodo de busca por input do titulo """
+
+    livros_pesquisa = []
+    for livro in livros:
+        if busca.lower() in livro["titulo"].lower():
+            livros_pesquisa.append(livro)
+    return livros_pesquisa
+
+def listar_categorias(livros):
+    categoria = []
+    for livros in livros:
+        if livros["categoria"] not in categoria:
+            categoria.append(livros["categoria"])   
+
+    categoria.sort()
+    return categoria
+
+def filtro_por_categoria(livros, categoria):
+    if categoria == "Todas":
         return livros
-    else:
-        livros_pesquisa = []
-        for livro in livros:
-            if busca in livro["titulo"]:
-                livros_pesquisa.append(livro)
-        if livros_pesquisa == "":
-            return  "Valor não encontrado"
-        else:
-            return livros_pesquisa
+    
+    resultado = []
+    for livro in livros:
+        if livros["categoria"] == categoria:
+            resultado.append(livro)
+    return resultado
+
 
 def main():
     st.set_page_config(page_title="Dashboard de Livros", page_icon="📚", layout="wide")
@@ -73,11 +89,20 @@ def main():
     col4.metric("Livro mais caro", f"£{mais_caro["preco"]}")
     col4.caption(mais_caro["titulo"])
 
-    # tabela = montar_tabela(livros)
-    busca = st.text_input("🔎 Busca por titulos:", type="search")
-    resultado_busca = montar_tabela(buscar_por_titulo(livros,busca))
+    col_busca, col_categoria = st.columns(2)
 
-    st.dataframe(resultado_busca)
+    # tabela = montar_tabela(livros)
+    busca = col_busca.text_input("🔎 Busca por titulos:", type="search")
+    categoria = col_categoria.selectbox("Filtro por categoria", ["Todas"]  + listar_categorias(livros))
+
+    resultado_busca = filtro_por_categoria(livros, categoria)
+    resultado_busca = buscar_por_titulo(resultado_busca,busca)
+
+
+    if len(resultado_busca) ==0:
+        st.warning("Nenum livro encontrado")
+    else:
+        st.dataframe(resultado_busca)
 
 if __name__ == "__main__":
     main()

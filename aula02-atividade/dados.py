@@ -8,7 +8,6 @@ from pathlib import Path
 PASTA = Path(__file__).parent
 CAMINHO_LIVROS = PASTA / "livros.csv"
 
-
 def ler_livros():
     """Lê o CSV de livros e devolve uma lista de dicionários.
 
@@ -27,7 +26,6 @@ def ler_livros():
         print("Algum erro aconteceu na leitura do arquivo", error)
 
     return livros
-
 
 def calcular_preco_medio(livros):
     """Soma os preços de todos os livros e divide pelo total."""
@@ -90,6 +88,7 @@ def preparar_livros(linhas):
 def carregar_livros():
     """Lê o CSV e já devolve os livros prontos para usar."""
     return preparar_livros(ler_livros())
+
 
 
 if __name__ == "__main__":
