@@ -13,6 +13,6 @@
 ## Como rodar
 ```powershell
 .venv\Scripts\Activate.ps1
-python aula04/teste_arquivos.py    # teste dos modos "w" e "a"
+python aula04/teste_arquivos.py 
 streamlit run aula04/app.py
 ```
