@@ -10,17 +10,21 @@ import dados
 
 def encontrar_livro(livros, titulo):
     """Devolve o primeiro livro com esse título."""
-    for livro in livros:
-        if livro["titulo"] == titulo:
-            return livro
+    return [livro for livro in livros if livro["titulo"] == titulo]
+
+    # for livro in livros:
+    #     if livro["titulo"] == titulo:
+    #         return livro
         
 def listar_titulos(livros):
-    titulos = []
-    for livro in livros:
-        if livro["titulo"] not in titulos:
-            titulos.append(livro["titulo"])
-    titulos.sort()
-    return titulos
+    return [livro["titulo"].sort() for livro in livros if livro["titulo"] not in livros]
+
+    # titulos = []
+    # for livro in livros:
+    #     if livro["titulo"] not in titulos:
+    #         titulos.append(livro["titulo"])
+    # titulos.sort()
+    # return titulos
 
 def somar_favoritos(livros):
     """Soma os preços de todos os livros e divide pelo total."""
