@@ -99,6 +99,7 @@ def salvar_favorito(livro):
             "comentario":   "",
         })
 
+
 def carregar_favoritos():
     """Lê os favoritos e devolve um dicionário: {titulo: dados do favorito}."""
 

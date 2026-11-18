@@ -73,3 +73,70 @@ notas: Listas, tuplas, set, dicionario, desempacotamento, set, add, sorted, e ou
 
 **Funções Lambda:** 
 - Funções anônimas de uma expressão (lambda parametro: retorno) passadas ao parâmetro key= da função sorted() para ordenar listas de dicionários por título, preço ou nota, combinadas com reverse=True para ordem decrescente.   
+
+## Aula 6 -  Programação Orientada a Objetos: Classes, objetos, atributos e metodos
+
+def main():
+    estudante = get_estudante()
+    if estudante["nome"] =="Roni":
+        estudante["casa"] = "Grifinoria"
+
+    print(f"O bruxo {estudante["nome"]} pertence a casa {estudante["casa"]}")
+
+def get_estudante():
+    estudante = {}
+
+    estudante["nome"] = input ("Nome do bruxo: ")
+    estudante["casa"] = input ("Casa: ")
+
+    return estudante
+
+if __name__  == "__main__":
+    main()
+
+-------
+
+def main():
+    estudante = get_estudante()
+    if estudante["nome"] =="Roni":
+        estudante["casa"] = "Grifinoria"
+
+    print(f"O bruxo {estudante["nome"]} pertence a casa {estudante["casa"]}")
+
+
+""" Construção de tupla e chamada de chaves """
+def get_estudante():
+
+    
+    nome = input ("Nome do bruxo: ")
+    casa = input ("Casa: ")
+
+    return { "nome": nome, 
+             "casa": casa } 
+
+if __name__  == "__main__":
+    main()
+
+-----
+
+class Estudante:
+    ...
+
+
+def main():
+    estudante = get_estudante()
+
+    print(f"O bruxo {estudante.nome} pertence a casa {estudante.casa}")
+
+
+""" Construção de tupla e chamada de chaves """
+def get_estudante():
+    estudante = Estudante()
+
+    estudante.nome = input ("Nome do bruxo: ")
+    estudante.casa = input ("Casa: ")
+
+    return estudante
+
+if __name__  == "__main__":
+    main()
