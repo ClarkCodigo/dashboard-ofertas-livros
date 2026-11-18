@@ -9,6 +9,14 @@
     pip install -r aula04/requirements.txt
     streamlit run aula04/app.py #rodar o arquivo web
 ```
+``` Bash
+    python3 -m venv .venv
+    source .venv/bin/activate
+
+    # chamar dados da aula atual
+    pip install -r aula04/requirements.txt
+    streamlit run aula04/app.py # rodar o arquivo web
+```
 
 *Utilizar docstring nas funções*
 
