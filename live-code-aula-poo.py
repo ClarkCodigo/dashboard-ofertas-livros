@@ -16,7 +16,7 @@ class Estudante:
 
     # Renderização do objeto
     def __str__(self):
-        return f"O bruxo {self.nome} pertence a casa {self.casa}"
+        return f"O bruxo {self.nome} pertence a casa {self.casa}, e seu patrono e {self.get_patrono()}"
     
     #Metodo (Instance Method)
     def get_patrono(self):
@@ -33,7 +33,7 @@ class Estudante:
 
 def main():
     estudante = get_estudante()
-    print(estudante, estudante.get_patrono())
+    print(estudante)
 
     # print(f"O bruxo {estudante.nome} pertence a casa {estudante.casa}")
 
